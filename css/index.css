@@ -24,7 +24,7 @@ body {
 
 body.main-page, 
 body.get-started-page {
-    background-image: url('./../images/background.jpg') !important;
+    background-image: url('./../images/background.webp') !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
