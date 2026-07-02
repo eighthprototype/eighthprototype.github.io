@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Nyoman Yudiantara</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="bg-dark text-white min-vh-100 p-4 d-flex flex-column justify-content-between">
+
+    <!-- User AI -->
+    <main class="container-fluid px-md-5 my-auto">
+        <div class="row pt-4 mb-5">
+            <div class="col-12 position-relative">
+                <div class="decorative-wave mb-2">~~~~~~~</div>
+                <h1 class="display-3 fw-normal main-title gradient-text">
+                    Projects for our<br>clients
+                </h1>
+            </div>
+        </div>
+
+        <div class="row g-4 project-slider mb-4" id="projectSliderContainer">
+            <div class="col-md-6" id="leftCardCol">
+                <div class="project-card card-gradient-1 p-5 d-flex flex-column justify-content-between">
+                    <span class="category-tag opacity-50 small text-lowercase" id="leftCategory">branding</span>
+                    <div class="card-body-content mt-5">
+                        <h2 class="display-6 fw-normal mb-3" id="leftTitle">Food store<br>identity</h2>
+                        <p class="small opacity-75 m-0 max-w-desc" id="leftDesc">We worked with a local health food store to create a new brand identity that was both modern and eco-friendly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6" id="rightCardCol">
+                <div class="project-card card-gradient-2 p-5 d-flex flex-column justify-content-between">
+                    <span class="category-tag opacity-50 small text-lowercase" id="rightCategory">web design</span>
+                    <div class="card-body-content mt-5">
+                        <h2 class="display-6 fw-normal mb-3" id="rightTitle">Technology<br>startup site</h2>
+                        <p class="small opacity-75 m-0 max-w-desc" id="rightDesc">We partnered with a technology startup to create a new website that would showcase their innovative product and attract investors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center gap-4 slider-controls mb-5">
+            <button class="control-btn btn p-0" id="prevSlideBtn">‹</button>
+            <div class="d-flex gap-2 indicator-dots" id="dotsContainer">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
+            <button class="control-btn btn p-0" id="nextSlideBtn">›</button>
+        </div>
+    </main>
+
+    <footer class="custom-footer d-flex flex-column flex-md-row w-100 mt-auto">
+        <div class="footer-brand d-flex align-items-center gap-3 p-4">
+            <span class="logo-icon gradient-text">✴</span>
+            <div class="row">
+                <div class="col">
+                    <h1 class="m-0 gradient-text">Influenzailla</h1>
+                </div>
+                <div class="col">
+                    <p class="m-0 text-lowercase opacity-75 gradient-text">bespoke design and marketing services</p>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="footer-grid flex-grow-1">
+            <a href="#" class="grid-item gradient-text">ABOUT</a>
+            <a href="#" class="grid-item gradient-text">SERVISES</a>
+            <a href="#" class="grid-item gradient-text">CASES</a>
+            <a href="#" class="grid-item gradient-text">TEAM</a>
+            <a href="#" class="grid-item lang-icon">🌐</a>
+            <a href="#" class="grid-item gradient-text span-2">BOOST PROGRAM</a>
+            <a href="#" class="grid-item gradient-text">PRODUCTS</a>
+            <a href="#" class="grid-item gradient-text">BOOK</a>
+            <a href="#" class="grid-item gradient-text">BLOG</a>
+        </nav>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+        // Using AI
+        // 1. Core Data Repository for your slides
+        const projectSlides = [
+            {
+                left: { category: "branding", title: "Food store<br>identity", desc: "We worked with a local health food store to create a new brand identity that was both modern and eco-friendly.", gradient: "card-gradient-1" },
+                right: { category: "web design", title: "Technology<br>startup site", desc: "We partnered with a technology startup to create a new website that would showcase their innovative product and attract investors.", gradient: "card-gradient-2" }
+            },
+            {
+                left: { category: "marketing", title: "Social media<br>campaign", desc: "Accelerated brand community awareness across targeted networks over a concise multi-quarter visual campaign layout.", gradient: "card-gradient-2" },
+                right: { category: "development", title: "E-Commerce<br>platform", desc: "Built a fully tailor-made payment framework matching high conversion benchmarks and aesthetic design systems.", gradient: "card-gradient-1" }
+            },
+            {
+                left: { category: "production", title: "Content asset<br>creation", desc: "Crafted scalable dynamic audio and high-resolution visuals matching seasonal media deployment strategies.", gradient: "card-gradient-1" },
+                right: { category: "strategy", title: "Brand launch<br>consultancy", desc: "Collaboratively architected full design matrices, positioning premium entities dynamically inside competitive markets.", gradient: "card-gradient-2" }
+            }
+        ];
+
+        let currentSlideIndex = 0;
+
+        // 2. DOM Elements
+        const elements = {
+            left: { category: document.getElementById('leftCategory'), title: document.getElementById('leftTitle'), desc: document.getElementById('leftDesc'), card: document.querySelector('#leftCardCol .project-card') },
+            right: { category: document.getElementById('rightCategory'), title: document.getElementById('rightTitle'), desc: document.getElementById('rightDesc'), card: document.querySelector('#rightCardCol .project-card') },
+            dots: document.querySelectorAll('#dotsContainer .dot'),
+            prevBtn: document.getElementById('prevSlideBtn'),
+            nextBtn: document.getElementById('nextSlideBtn')
+        };
+
+        // 3. Update Render State Logic
+        function updateSlider(index) {
+            // Handle bound wrapping limits safely
+            if (index < 0) index = projectSlides.length - 1;
+            if (index >= projectSlides.length) index = 0;
+            currentSlideIndex = index;
+
+            const data = projectSlides[currentSlideIndex];
+
+            // Update Left Side Card View Components
+            elements.left.category.textContent = data.left.category;
+            elements.left.title.innerHTML = data.left.title;
+            elements.left.desc.textContent = data.left.desc;
+            elements.left.card.className = `project-card ${data.left.gradient} p-5 d-flex flex-column justify-content-between`;
+
+            // Update Right Side Card View Components
+            elements.right.category.textContent = data.right.category;
+            elements.right.title.innerHTML = data.right.title;
+            elements.right.desc.textContent = data.right.desc;
+            elements.right.card.className = `project-card ${data.right.gradient} p-5 d-flex flex-column justify-content-between`;
+
+            // Synchronize Active Classes Across Indicator Dots 
+            elements.dots.forEach((dot, idx) => {
+                if (idx === currentSlideIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // 4. Register Operational Click Handlers
+        elements.prevBtn.addEventListener('click', () => updateSlider(currentSlideIndex - 1));
+        elements.nextBtn.addEventListener('click', () => updateSlider(currentSlideIndex + 1));
+
+        elements.dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => updateSlider(idx));
+        });
+    </script>
+</body>
+</html>
